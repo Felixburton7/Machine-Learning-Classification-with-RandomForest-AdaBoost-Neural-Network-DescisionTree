@@ -1,4 +1,4 @@
-# Project Title: Decision Tree Classifier with Sample Weights
+# Decision Tree Classifier with Sample Weights
 
 ## Description
 
