@@ -20,7 +20,7 @@ pip install numpy pandas scikit-learn matplotlib
 
 Handle missing values and prepare the data for training and validation:
 
-```python
+``'python
 from sklearn.impute import SimpleImputer
 import numpy as np
 
@@ -75,7 +75,7 @@ plt.show()
 
 ### Additional Notes
 
-- The `max_depth` and `random_state` parameters of the Decision Tree Classifier can be adjusted as needed.
+- The `max_depth` & `random_state` parameters of the Decision Tree Classifier can be adjusted as needed.
 - The multipliers for the `viewed` and `explored` features can be fine-tuned based on the specific dataset and requirements.
 - Ensure the dataset is split appropriately into training, validation, and test sets.
 
