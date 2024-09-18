@@ -2,7 +2,7 @@
 
 ## Description
 
-This project involves creating a Decision Tree Classifier, Adaboost, Random Forest, and Neural Network, for a given dataset. The scores were posted onto Kaggle, and the my results for adaboost ranked in the top 10 in cohort with 98.7% accuracy when compared to an unseen dataset.  The classifier is trained using sample weights based on specific features, and its performance is evaluated using accuracy metrics and confusion matrix visualization.
+This project involves creating a Decision Tree Classifier, Adaboost, Random Forest, and Neural Network, for a given dataset. The scores were posted onto Kaggle, and the results for adaboost ranked in the top 5% in the cohort (>250 members) with 98.7% accuracy when measured against an unseen dataset.  The classifier is trained using sample weights based on specific features, and its performance is evaluated using accuracy metrics and confusion matrix visualization.
 
 ## Example of the Decision Tree Classfier that achieved high accuracy on unseen data
 
