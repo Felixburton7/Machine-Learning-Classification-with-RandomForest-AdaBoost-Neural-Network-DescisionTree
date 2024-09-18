@@ -1,0 +1,77 @@
+# Kaggle HW5: Felix Burton
+
+# Remember to write your team name above, which MUST match your team name on Kaggle!!
+# Assignments without a team name will receive a 0/40 on the "accuracy on test data" component of this assignment's grade.
+
+# Mount Google Drive (if using Colab)
+from google.colab import drive
+drive.mount('/content/drive')
+
+# Import necessary libraries
+import pandas as pd
+import requests
+from sklearn.dummy import DummyClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import confusion_matrix, accuracy_score
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Function to download files if running on Google Colab
+def save_file(url, file_name):
+    r = requests.get(url)
+    with open(file_name, 'wb') as f:
+        f.write(r.content)
+
+# Download dataset
+save_file('https://courses.cs.washington.edu/courses/cse416/23sp/homeworks/hw5/edx_train.csv', 'edx_train.csv')
+save_file('https://courses.cs.washington.edu/courses/cse416/23sp/homeworks/hw5/edx_test.csv', 'edx_test.csv')
+
+# Load datasets
+df_train = pd.read_csv('edx_train.csv')
+df_test = pd.read_csv('edx_test.csv')
+
+# Define target column
+target = "certified"
+
+# Dummy classifier (returns labels sampled uniformly at random)
+dummy_model = DummyClassifier(strategy="uniform")
+dummy_model.fit(df_train.drop(target, axis=1), df_train[target])
+
+# Generate predictions on the test set
+predictions = dummy_model.predict(df_test)
+
+# Decision Tree Classifier: First Classification Model
+features = ['course_id','registered', 'viewed', 'explored', 'final_cc_cname_DI', 'LoE_DI', 'YoB', 'gender', 
+            'start_time_DI', 'last_event_DI', 'nevents', 'ndays_act', 'nplay_video', 'nchapters', 'nforum_posts']
+target = 'certified'
+
+# Train-validation split
+train_val, test_data = train_test_split(df_train[features + [target]], test_size=0.1)
+train_data, validation_data = train_test_split(train_val, test_size=0.2)
+
+# Handle missing values using most frequent strategy
+train_data_clean = train_data.dropna(subset=features)
+validation_data_clean = validation_data.dropna(subset=features)
+
+# Decision Tree classifier
+dt = DecisionTreeClassifier(max_depth=4, random_state=7)
+dt.fit(train_data_clean[features], train_data_clean[target])
+
+# Predict on validation set
+dt_y_pred = dt.predict(validation_data_clean[features])
+dt_score = dt.score(validation_data_clean[features], validation_data_clean[target])
+
+# Visualization of Confusion Matrix
+def visualize_confusion_matrix(test, pred, score):
+    cm = confusion_matrix(test, pred)
+    plt.figure(figsize=(9,9))
+    sns.heatmap(cm, annot=True, fmt=".3f", linewidths=.5, square=True, cmap='Blues_r')
+    plt.ylabel('Actual label')
+    plt.xlabel('Predicted label')
+    all_sample_title = f'Accuracy Score: {score}'
+    plt.title(all_sample_title, size=15)
+    plt.show()
+
+# Visualize Confusion Matrix
+visualize_confusion_matrix(validation_data_clean[target], dt_y_pred, dt_score)
