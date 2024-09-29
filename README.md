@@ -2,7 +2,7 @@
 
 ## Disclaimer
 
-This project was developed and graded using Google Colab, utilizing the free access to GPUs provided by the platform. This is a common practice in machine learning and data science, as it allows for the efficient training of models without the need for personal high-performance computing resources. Leveraging Google Colab’s free GPUs helps accelerate tasks like training large models or performing computationally intensive operations.
+This project was developed and graded using Google Colab, utilizing the free access to GPUs provided by the platform. Leveraging Google Colab’s free GPUs helps accelerate tasks like training large models or performing computationally intensive operations.
 
 For a cleaner, more structured version of the code, please refer to the Scikit-learn file, which contains a more refined and organized version of the project.
 
