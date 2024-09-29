@@ -1,5 +1,13 @@
 # Machine-Learning-Classification Task using a series of techniques 
 
+## Disclaimer
+
+This project was developed and graded using Google Colab, utilizing the free access to GPUs provided by the platform. This is a common practice in machine learning and data science, as it allows for the efficient training of models without the need for personal high-performance computing resources. Leveraging Google Colab’s free GPUs helps accelerate tasks like training large models or performing computationally intensive operations.
+
+As a result, some of the code in this repository may appear a bit messy, due to the nature of rapid prototyping and development within the Colab environment. For a cleaner, more structured version of the code, please refer to the Scikit-learn file, which contains a more refined and organized version of the project.
+
+Thank you for understanding! Feel free to contribute or raise issues if you have any suggestions or improvements.
+
 ## Description
 
 This project involves creating a Decision Tree Classifier, Adaboost, Random Forest, and Neural Network, for a given dataset. The scores were posted onto Kaggle, and the results for adaboost ranked in the top 5% in the cohort (>250 members) with 98.7% accuracy when measured against an unseen dataset.  The classifier is trained using sample weights based on specific features, and its performance is evaluated using accuracy metrics and confusion matrix visualization.
